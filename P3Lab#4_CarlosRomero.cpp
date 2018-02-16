@@ -7,23 +7,20 @@ using namespace std;
 
 //Menu principal del programa.
 int menu();
+//Liberar memoria de la matriz
+void liberarMatriz(int**&, int);
+//Liberar memoria de la matriz.
+void liberarTablero(string**&,int);
 
 int main()
 {	bool Continuar=1;
-
+	vector<string> Array;
 	while (Continuar){
 		//Llamado del menu del programa.
 		switch(menu()){
 			case 1:{//
 				cout<<"Usted selecciono: "<<endl;
-			//	int matrix[5][5];
-				vector<string> data;
-				data.push_back("my name");
-				data.push_back("laudia");
-				data.push_back("claudia 3");
-				for(int i=0;i<data.size();i++){
-				cout <<data[i]<<endl;
-				}
+
 				break;
 				}//Fin del case 1.
 			case 2:{//
@@ -61,9 +58,37 @@ return 0;
 int menu(){
 	int Respuesta=-100;
 	while(Respuesta<=0||Respuesta>4){
-		cout<<"Bienvenido al laboratorio #"<<endl<<"Seleccione la opcion que desea: "<<endl;
+		cout<<"Lab#4 CarlosRomero"<<endl<<"Ingrese una opción:  "<<endl;
 		cout <<"1-"<<endl<<"2-"<<endl<<"3-"<<endl<<"4-"<<endl;
 		cin>>Respuesta;
 	}
 	return Respuesta;
 }//Fin del metodo del Menu.
+
+
+
+//liberar memoria
+void liberarMatriz(int**& matriz, int size){
+        for(int i= 0; i<size; i++){
+                delete[] matriz[i];
+                matriz[i] = NULL;
+        }
+
+        delete[] matriz;
+        matriz = NULL;
+
+        cout<< "Memoria Liberada"<< endl;
+}
+//Liberar memoria de la matriz.
+void liberarTablero(string**& tablero, int size){
+        for(int i = 0; i< size; i++){
+                delete[] tablero[i];
+                tablero[i] = NULL;
+        }
+
+        delete[] tablero;
+        tablero = NULL;
+
+        cout<< "Memoria Liberada "<< endl;
+}
+
