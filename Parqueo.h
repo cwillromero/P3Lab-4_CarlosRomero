@@ -1,23 +1,22 @@
+using namespace std;
 #ifndef PARQUEO_H
 #define PARQUEO_H
-
-using namespace std;
-class Parqueo{
-	private: 
+#include "Carro.h"
+class parqueo{
+	private:
 		int pisos;
 		int personas;
 		int altura;
 		int capacidad;
-		Carro*** carros;
+		Carro**** carros;
 	public:
-		Parqueo(int, int, int);
-		Parqueo();
-		int getPisos();
-		void setPisos(int);
-		int getCapacidad();
-		void setCapacidad(int, int);
-		void calcularCapacidad(int, int);
-		~Parqueo();
+		parqueo();
+		parqueo(int,int,int);
+		~parqueo();
+		void setpisos(int);
+		void setcapacidad(int,int);
+		int getpisos();
+		int getcapacidad();
+		
 };
-
 #endif

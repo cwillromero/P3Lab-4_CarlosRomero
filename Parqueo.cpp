@@ -1,74 +1,69 @@
-#include "Parqueo.h"
-#include <iostream>
-#include <string>
 using namespace std;
+#include "Parqueo.h"
+#include <string>
+#include <iostream>
+#include "Carro.h"
+parqueo::parqueo(){
+	pisos=5;
+	capacidad=5;
+}
 
-Parqueo::Parqueo(int x,int y, int z){
-	pisos=nPisos;
-	capacidad=nCapacidad;
+parqueo::parqueo(int x, int y, int z){
 	personas=x;
 	pisos=y;
 	altura=z;
-	setCapacidad(x,y);
-
+	setcapacidad(x,y);
 	carros=new Carro***[x];
-	for(int i=0; i<x; i++){
-		carros[i]=new Carro**[y];
-	       for(int j=0; j<y; j++){
-	       		carros[i][j]=new Carro*[z];
-			for(int k=0; k<z; k++){
-				carros[i][j][k]=NULL;
+	for (int i=0;i<x;i++){
+		carros[i]=new Carro**[y];	
+		for (int j=0;j<y;j++){
+			carros[i][j]=new Carro*[y];
+			for (int k=0;k<y;k++){
+				carros[i][j][k]=NULL;;
 			}
-	       }	       
+		}
 	}
-
 }
 
-Parqueo::~Parqueo(){
-	cout<<"Destruccion de Parqueo"<<endl;
+parqueo::~parqueo(){
+	cout <<"Parqueo Destruido";
 	int x=personas;
 	int y=pisos;
 	int z=pisos;
-	for(int i=0; i!=x; i++){
-		for(int j=0; j!=y; j++){
-			for(int k=0; k!=y; k++){
+	for (int i=0;i!=x;i++){
+		for(int j=0;j!=y;j++){
+			for (int k=0;k!=z;k++){
 				carros[i][j][k]=NULL;
 				delete carros[i][j][k];
 			}
-			delete carros[i][j];
+			delete[] carros[i][j];
 		}
-		delete[] carros;
-	}
+		delete [] carros[i];
+	}	
+	delete[] carros;
 }
 
-int Parqueo::getPisos(){
+
+void parqueo::setcapacidad(int N_Personas, int M){
+	int n_personas=N_Personas/10;
+	int m=0;
+	if (N_Personas<12){
+		m=n_personas*0.7;	
+	}else{
+		m=n_personas*0.4;
+	}
+
+}
+
+void parqueo::setpisos(int Pisos){
+	pisos=Pisos;
+
+}
+
+int parqueo::getpisos(){
 	return pisos;
 }
 
-void Parqueo::setPisos(int nPisos){
-	pisos=nPisos;
-}
-
-int Parqueo::getCapacidad(){
+int  parqueo::getcapacidad(){
 	return capacidad;
-}
-
-void Parqueo::setCapacidad(int n, int m){
-	n=n/10;
-	if(n>12){
-		m=n*0.7;
-	}else{
-		m=n*0.4;
-	}
-	capacidad=n*m;
-}
-
-void Parqueo::calcularCapacidad(int n, int m){
-	n=n/10;
-	if(n>12){
-		m=n*0.7;
-	}else{
-		m=n*0.4;
-	}	
-	
 }
