@@ -88,7 +88,6 @@ void liberarTablero(string**& tablero, int size){
 
         delete[] tablero;
         tablero = NULL;
-	cout<<"Hola bb"<<endl;
         cout<< "Memoria Liberada "<< endl;
 }
 
