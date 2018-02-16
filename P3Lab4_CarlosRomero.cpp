@@ -1,16 +1,15 @@
+#include "Carro.h"
+#include "Parqueo.h"
 #include <iostream>
 #include <string>
-#include <vector>  
+#include <vector> 
+
 using namespace std;
 
 //Prototipos de los metodos.
 
-//Menu principal del programa.
 int menu();
-//Liberar memoria de la matriz
-void liberarMatriz(int**&, int);
-//Liberar memoria de la matriz.
-void liberarTablero(string**&,int);
+void crearParqueo();
 
 int main()
 {	bool Continuar=1;
@@ -19,24 +18,24 @@ int main()
 		//Llamado del menu del programa.
 		switch(menu()){
 			case 1:{//
-				cout<<"Usted selecciono: "<<endl;
+				cout<<"Seleccion: "<<endl;
 
 				break;
 				}//Fin del case 1.
 			case 2:{//
-				cout<<"Usted selecciono: "<<endl;
+				cout<<"Seleccion: "<<endl;
 
 				break;
 				}//Fin del case 2
 
 			case 3:{//
-				cout<<"Usted selecciono: "<<endl;
+				cout<<"Seleccion: "<<endl;
 
 				break;
 				}//Fin del case 3
 
 			case 4:{//
-				cout<<"Usted selecciono: "<<endl;
+				cout<<"Seleccion: "<<endl;
 
 				break;
 				}//Fin del case 4.
@@ -58,8 +57,9 @@ return 0;
 int menu(){
 	int Respuesta=-100;
 	while(Respuesta<=0||Respuesta>4){
-		cout<<"Lab#4 CarlosRomero"<<endl<<"Ingrese una opción:  "<<endl;
-		cout <<"1-"<<endl<<"2-"<<endl<<"3-"<<endl<<"4-"<<endl;
+		cout<<"Lab#4 CarlosRomero"<<endl<<"Ingrese una opción: "<<endl;
+		cout <<"1- Crear Edificio "<<endl<<"2- Crear Carro y Agregar al Parqueo"<<endl
+		<<"3- Eliminar Carro del Parqueo"<<endl<<"4- Listar Parqueos"<<endl<<"Salir"<<endl;
 		cin>>Respuesta;
 	}
 	return Respuesta;
@@ -68,7 +68,7 @@ int menu(){
 
 
 //liberar memoria
-void liberarMatriz(int**& matriz, int size){
+/*void liberarMatriz(int**& matriz, int size){
         for(int i= 0; i<size; i++){
                 delete[] matriz[i];
                 matriz[i] = NULL;
@@ -78,9 +78,9 @@ void liberarMatriz(int**& matriz, int size){
         matriz = NULL;
 
         cout<< "Memoria Liberada"<< endl;
-}
+}*/
 //Liberar memoria de la matriz.
-void liberarTablero(string**& tablero, int size){
+/*void liberarTablero(string**& tablero, int size){
         for(int i = 0; i< size; i++){
                 delete[] tablero[i];
                 tablero[i] = NULL;
@@ -88,5 +88,5 @@ void liberarTablero(string**& tablero, int size){
         delete[] tablero;
         tablero = NULL;
         cout<< "Memoria Liberada."<< endl;
-}
+}*/
 
