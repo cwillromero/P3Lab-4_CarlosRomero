@@ -9,7 +9,7 @@ int menu();
 void liberarMatriz(int**&, int);
 parqueo* newParqueo();
 Carro newCarro(Carro****,int,int,int);
-
+void verEspacios(Carro****, int, int);
 
 int main()
 {	bool Continuar=1;
@@ -31,11 +31,10 @@ int main()
 				}
 
 			case 3:{
-				
 				break;
 				}
-
 			case 4:{
+				verEspacios(global->getmatriz(), global->getn(), global->getm());
 				break;
 				}
 			default:{		
@@ -68,6 +67,7 @@ Carro newCarro(Carro**** park,int  x,int y, int altura){
 			}
 		}
 	}	
+
 }
 
 
@@ -88,11 +88,24 @@ parqueo* newParqueo(){
 }
 
 
+void verEspacios(Carro**** park, int x, int y){
+	int espacios=0;
+	for (int i=0;i<x;i++){
+		for (int j=0;j<y;j++){
+			if (park[i][j]==NULL){
+				espacios++;
+			}
+		}
+	}
+	cout<<"Hay "<<espacios<<" espacios disponibles"<<endl;
+
+}
+
 int menu(){
 	int Respuesta=-100;
 	while(Respuesta<=0||Respuesta>4){
 		cout<<"Lab #4 "<<endl<<"Elija una opcion: : "<<endl;
-		cout <<"1-Crear parqueo"<<endl<<"2-Crear Carros y agregar a parqueo"<<endl<<"3- Eliminar Carro del parqueo"<<endl<<"4-Listar Parqueo"<<endl;
+		cout <<"1-Crear parqueo"<<endl<<"2-Crear Carros y agregar a parqueo"<<endl<<"3-Eliminar Carro del parqueo"<<endl<<"4-Listar Parqueo"<<endl;
 		cin>>Respuesta;
 	}
 	return Respuesta;
