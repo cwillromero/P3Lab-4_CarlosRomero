@@ -4,94 +4,109 @@
 #include "Carro.h"
 #include "Parqueo.h"
 using namespace std;
+
 int menu();
-parqueo crearParqueo();
-//Carro crearcarro(*Carro****);
+void liberarMatriz(int**&, int);
+parqueo* newParqueo();
+Carro newCarro(Carro****,int,int,int);
+
 
 int main()
 {	bool Continuar=1;
-	parqueo Global;
+	parqueo* global;
+	Carro**** estacionados;
 	while (Continuar){
 		switch(menu()){
-			case 1:{
-				Global=crearParqueo();
+			case 1:{	
+				global=newParqueo();
+				estacionados=global->getmatriz();
+				cout<<"Parqueo creado"<<endl;
 				break;
 				}
-			case 2:{
 
+			case 2:{
+				newCarro(global->getmatriz(), global->getn(),global->getm(),global->getaltura());
+				cout<<"Auto creado"<<endl;
 				break;
 				}
 
 			case 3:{
-
+				
 				break;
 				}
 
 			case 4:{
-
 				break;
 				}
-			default:{
+			default:{		
 				break;
 				}
-
 		}	
-	cout<<"Continuar?[0-No/1-Si]"<<endl;
+	cout<<"Continuar?[0-no/1-si]"<<endl;
 	cin>>Continuar;
 	}
 	return 0;
 }
 
-/*Carro crearcarro(*Carro**** parqueo){
+Carro newCarro(Carro**** park,int  x,int y, int altura){
 	int piso=0;
-	int alturac;
-	string matricula;
-	strinc color;
-	cout<<"Ingrese el piso para estacionar";
+	int caltura;
+	string marca;
+	string color;
+	cout<<"Ingrese el piso a estacionar: ";
 	cin>>piso;
-	Carro temp;
-	cout<<"Ingrese la matricula del carro";
-	cin>>matricula;
-	cout<<"Ingrese el color";
+	cout<<"Ingrese la marca del Carro: ";
+	cin>>marca;
+	cout<<"Ingrese el Color: ";
 	cin >>color;
-	cout<<"Ingrese la altura";
-	cin>>alturac;
-	for (int i=0;i<;i++){
-		for (int j=0;j<;j++){
-			if (carro[piso][i][j]==NULL){
-				temp =new carro();
-				carro[piso][i][j]=new Carro();
+	cout<<"Ingrese la altura: ";
+	cin>>caltura;
+	for (int i=0;i<x;i++){
+		for (int j=0;j<y;j++){
+			if (park[piso][i][j]==NULL){
+				park[i][j][piso] = new Carro(marca,color,caltura);
 			}
 		}
-	}
+	}	
+}
 
 
-}*/
-
-
-parqueo crearParqueo(){
+parqueo* newParqueo(){
 	int personas=-5;
 	int pisos=0;
 	int altura=0;
 	while (personas<=50||personas>=100){
-		cout<<"Ingrese la cantidad de personas: "<<endl;
+		cout<<"Ingrese la cantidad de personas"<<endl;
 		cin>>personas;
 	}
 	cout<<"Ingrese la altura del parqueo: "<<endl;
 	cin>>altura;
-	cout<<"ingrese la cantidad de pisos de la matriz: "<<endl;
+	cout<<"Ingrese la cantidad de pisos del parqueo: "<<endl;
 	cin>>pisos;
-	parqueo Temp = new parqueo(personas,pisos,altura);
+	parqueo* park=new parqueo(personas,altura,pisos);
+	return park;
 }
 
- 
+
 int menu(){
 	int Respuesta=-100;
 	while(Respuesta<=0||Respuesta>4){
-		cout<<"Bienvenido al laboratorio #"<<endl<<"Seleccione la opcion que desea: "<<endl;
-		cout <<"1-Crear parqueo."<<endl<<"2-Crear Carros y Agregar al parqueo"<<endl<<"3-Eliminar Carro del parqueo"<<endl<<"4-Listar Parqueo."<<endl;
+		cout<<"Lab #4 "<<endl<<"Elija una opcion: : "<<endl;
+		cout <<"1-Crear parqueo"<<endl<<"2-Crear Carros y agregar a parqueo"<<endl<<"3- Eliminar Carro del parqueo"<<endl<<"4-Listar Parqueo"<<endl;
 		cin>>Respuesta;
 	}
 	return Respuesta;
 }
+
+void liberarMatriz(int**& matriz, int size){
+        for(int i= 0; i<size; i++){
+                delete[] matriz[i];
+                matriz[i] = NULL;
+        }
+
+        delete[] matriz;
+        matriz = NULL;
+
+        cout<< "Espacio liberado"<< endl;
+}			
 

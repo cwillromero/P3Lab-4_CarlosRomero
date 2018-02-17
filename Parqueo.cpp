@@ -3,6 +3,7 @@ using namespace std;
 #include <string>
 #include <iostream>
 #include "Carro.h"
+
 parqueo::parqueo(){
 	pisos=5;
 	capacidad=5;
@@ -10,13 +11,14 @@ parqueo::parqueo(){
 
 parqueo::parqueo(int x, int y, int z){
 	personas=x;
-	pisos=y;
-	altura=z;
+	altura=y;
+	pisos=z;
+	z=z;
 	setcapacidad(x,y);
 	carros=new Carro***[x];
 	for (int i=0;i<x;i++){
 		carros[i]=new Carro**[y];	
-		for (int j=0;j<y;j++){
+		for (int j=0;j<capacidad;j++){
 			carros[i][j]=new Carro*[y];
 			for (int k=0;k<y;k++){
 				carros[i][j][k]=NULL;;
@@ -26,12 +28,8 @@ parqueo::parqueo(int x, int y, int z){
 }
 
 parqueo::~parqueo(){
-	cout <<"Parqueo Destruido";
-	int x=personas;
-	int y=pisos;
-	int z=pisos;
-	for (int i=0;i!=x;i++){
-		for(int j=0;j!=y;j++){
+	for (int i=0;i!=n;i++){
+		for(int j=0;j!=m;j++){
 			for (int k=0;k!=z;k++){
 				carros[i][j][k]=NULL;
 				delete carros[i][j][k];
@@ -44,13 +42,13 @@ parqueo::~parqueo(){
 }
 
 
-void parqueo::setcapacidad(int N_Personas, int M){
-	int n_personas=N_Personas/10;
-	int m=0;
-	if (N_Personas<12){
-		m=n_personas*0.7;	
+void parqueo::setcapacidad(int N, int M){
+	 n=N/10;
+	 m=0;
+	if (N<12){
+		m=N*0.7;	
 	}else{
-		m=n_personas*0.4;
+		m=N*0.4;
 	}
 
 }
@@ -66,4 +64,22 @@ int parqueo::getpisos(){
 
 int  parqueo::getcapacidad(){
 	return capacidad;
+}
+
+
+
+
+Carro**** parqueo::getmatriz(){
+	return carros; 
+}
+int parqueo:: getn(){
+	return n;
+}
+
+int parqueo:: getm(){
+	return n;
+}
+
+int parqueo::getaltura(){
+	return altura;
 }
