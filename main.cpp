@@ -75,7 +75,7 @@ parqueo* newParqueo(){
 	int personas=-5;
 	int pisos=0;
 	int altura=0;
-	while (personas<=50||personas>=100){
+	while (personas<=50||personas>=200){
 		cout<<"Ingrese la cantidad de personas"<<endl;
 		cin>>personas;
 	}
